@@ -93,7 +93,7 @@ export default function HomePage() {
           alt="button"
           width={300}
           height={70}
-          className="absolute bottom-36 left-1/2 -translate-x-1/2"
+          className="absolute bottom-[20%] left-1/2 -translate-x-1/2"
         />
       </Link>
       <svg
