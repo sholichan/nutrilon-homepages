@@ -14,7 +14,7 @@ export default function Games() {
   const iframeUrls: { [key: string]: string } = {
     milkman: `https://milkman.nutrilon.qyubit.com?id=${id}`,
     battle: `http://beatshield.nutrilon.qyubit.com?id=${id}`,
-    photobooth: `https://nutrilon-photobooth-frame.vercel.app?id=${id}`,
+    photobooth: `https://nutrilon.qyubit.com?id=${id}`,
   };
 
   return (
