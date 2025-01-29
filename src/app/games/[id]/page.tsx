@@ -17,8 +17,60 @@ export default function Games() {
     photobooth: `https://nutrilon.qyubit.com?id=${id}`,
   };
 
+  const requestFullscreen = () => {
+    const elem = document.documentElement as HTMLElement & {
+      requestFullscreen?: () => void;
+      webkitRequestFullscreen?: () => void;
+      mozRequestFullScreen?: () => void;
+      msRequestFullscreen?: () => void;
+    };
+
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) {
+      // Safari
+      elem.webkitRequestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      // Firefox
+      elem.mozRequestFullScreen();
+    } else if (elem.msRequestFullscreen) {
+      // IE/Edge
+      elem.msRequestFullscreen();
+    }
+  };
+
+  const exitFullscreen = () => {
+    const documentElement = document as Document & {
+      exitFullscreen?: () => void;
+      webkitExitFullscreen?: () => void;
+      mozCancelFullScreen?: () => void;
+      msExitFullscreen?: () => void;
+    };
+
+    if (documentElement.exitFullscreen) {
+      documentElement.exitFullscreen();
+    } else if (documentElement.webkitExitFullscreen) {
+      // Safari
+      documentElement.webkitExitFullscreen();
+    } else if (documentElement.mozCancelFullScreen) {
+      // Firefox
+      documentElement.mozCancelFullScreen();
+    } else if (documentElement.msExitFullscreen) {
+      // IE/Edge
+      documentElement.msExitFullscreen();
+    }
+  };
+
+  const handleFullscreenToggle = () => {
+    if (document.fullscreenElement) {
+      exitFullscreen();
+    } else {
+      requestFullscreen();
+    }
+  };
+
   return (
-    <div className="relative h-svh w-full">
+    <div className="relative h-svh w-full" onClick={handleFullscreenToggle}>
       <Image
         src={judul}
         alt="judul"
@@ -68,6 +120,7 @@ export default function Games() {
             src={iframeUrls[selectedImage]}
             className="h-screen w-screen"
             allowFullScreen
+            allow="camera; microphone"
           ></iframe>
         </div>
       )}
