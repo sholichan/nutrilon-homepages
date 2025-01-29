@@ -57,9 +57,9 @@ export default function Games() {
         }}
       />
       {selectedImage && (
-        <div className="absolute max-w-4xl h-svh z-50">
+        <div className="relative max-w-4xl h-svh z-50">
           <button
-            className="w-full bg-yellow-400 text-blue-900 font-bold rounded-md p-2"
+            className="absolute w-full bg-yellow-400 text-blue-900 font-bold rounded-md p-2"
             onClick={() => setSelectedImage("")}
           >
             Kembali
